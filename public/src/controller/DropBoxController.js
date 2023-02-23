@@ -63,7 +63,7 @@ class DropBoxController {
             formData.append('path', file.filepath);
             formData.append('key', key);
 
-            promises.push(this.ajax('/file', 'DELETE', formData));
+            promises.push(this.ajax('/files', 'DELETE', formData));
 
             
 
@@ -198,7 +198,7 @@ class DropBoxController {
 
             ajax.open(method, url);
 
-            ajax.onload = event =>{
+            ajax.onload = (event) =>{
 
                  try{
 
