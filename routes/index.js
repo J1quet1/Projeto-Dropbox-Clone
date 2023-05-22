@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.delete('/file', (req, res)=>{
+router.delete('/files', (req, res)=>{
 
   let form = new formidable.IncomingForm({
     uploadDir: './upload',
