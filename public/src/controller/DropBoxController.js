@@ -77,13 +77,14 @@ class DropBoxController {
 
             this.removeTask().then((responses)=>{
 
-                responses.forEach(response => {
-            if (response.field.key) {this.getFirebaseRef().child(response.field.key).remove();
-            }
-          })
+            responses.forEach(response => {
+                if (response.field.key) {
+                    this.getFirebaseRef().child(response.field.key).remove();
+                }
+            });
 
-                console.log('responses');
-
+            this.Complete();
+    
             }).catch(err=>{
                 console.error(err);
             });
@@ -103,7 +104,8 @@ class DropBoxController {
                 file.originalFilename = name;
 
                 this.getFirebaseRef().child(li.dataset.key).set(file);
-
+                
+                this.Complete();
             }
 
         });
@@ -147,10 +149,10 @@ class DropBoxController {
 
                 });       
                 
-                this.uploadComplete();
+                this.Complete();
 
             }).catch(err=>{
-                this.uploadComplete();
+                this.Complete();
                 console.error(err);   
             });
 
@@ -162,14 +164,18 @@ class DropBoxController {
 
     }
 
-        uploadComplete(){
+        Complete(){
 
             this.modalShow(false);
 
             this.inputFilesEl.value = '';
 
             this.btnSendFileEl.ariaDisabled = false;
+            
+            this.btnSendFileEl.disabled = false;
 
+            this.btnDelete.style.display = 'none';
+            this.btnRename.style.display = 'none';
         }
      
         getFirebaseRef(){
