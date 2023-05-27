@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('file', (req,res)=>{
+router.get('files', (req,res)=>{
 
   let path = './' + req.query.path;
 
