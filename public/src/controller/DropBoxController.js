@@ -582,7 +582,7 @@ class DropBoxController {
 
                 e.preventDefault();
 
-                this.currentFolder = a.dataset.path.split('/');
+                this.currentFolder = a.dataset.filepath.split('/');
 
                 this.openFolder();
 
@@ -606,7 +606,7 @@ class DropBoxController {
                 break;
 
                 default:
-                    window.open('/file?path=' + file.filepath);
+                    window.open('/files?path=' + file.filepath);
 
             }
 
